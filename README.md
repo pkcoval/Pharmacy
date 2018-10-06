@@ -22,5 +22,8 @@ hashowane
  
  ## Screen:
  
-![Example screenshot](./s/domki.png)
-![Example screenshot](./s/rezerwacej.png)
+![Example screenshot](./s/1.png)
+![Example screenshot](./s/2.png)
+![Example screenshot](./s/3.png)
+![Example screenshot](./s/4.png)
+![Example screenshot](./s/5.png)
