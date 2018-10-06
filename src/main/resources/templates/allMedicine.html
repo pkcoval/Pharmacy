@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All medicines</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div style="width: 70%">
+    <img th:src="@{/images/leki.png}" class="img-responsive center-block" width="500" height="200" alt="Logo"/>
+    <center><h2 class="h2">All medicines</h2></center>
+<table class="table"  >
+
+    <tr>
+        <th>Name</th>
+        <th>Producer </th>
+        <th>Price</th>
+        <th>Term of validaty </th>
+        <th>Is the medicine on the recipe </th>
+    </tr>
+
+    <tr th:each="medicine: ${medicineList}">
+        <td th:text="${medicine.name}"></td>
+        <td th:text="${medicine.producer}"></td>
+        <td th:text="${medicine.price}"></td>
+        <td th:text="${medicine.termOfValidaty}"></td>
+        <td th:if="${medicine.hasRecipe == true}"  th:text="Yes" ></td>
+        <td th:if="${medicine.hasRecipe == false}"  th:text="No" ></td>
+
+
+    </tr>
+
+
+</table>
+</div>
+
+</body>
+</html>

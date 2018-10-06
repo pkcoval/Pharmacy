@@ -25,11 +25,17 @@
                 <span th:utext="${userName}"></span>
             </div>
             <div class="panel-body">
-                <img th:src="@{/images/beer.jpg}" class="img-responsive center-block" width="400" height="400"
-                     alt="Beer"/>
+                <div class="col-sm-9">
+                    <button type="button" class="btn btn-primary btn-block" onclick="window.location.href='/admin/addMedicine'">Add new medicine</button>
+                </div>
+
             </div>
             <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
         </div>
+        <div class="col-sm-9">
+            <button type="button" class="btn btn-primary btn-block" onclick="window.location.href='/allMedicine'">All medicines</button>
+        </div>
+
     </div>
 
 </div>

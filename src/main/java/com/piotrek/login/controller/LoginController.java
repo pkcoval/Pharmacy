@@ -3,6 +3,7 @@ package com.piotrek.login.controller;
 import javax.validation.Valid;
 
 import com.piotrek.login.model.User;
+import com.piotrek.login.repository.UserRepository;
 import com.piotrek.login.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -21,6 +22,9 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    UserRepository userRepository;
+
     @RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
     public ModelAndView login(){
         ModelAndView modelAndView = new ModelAndView();
@@ -34,8 +38,10 @@ public class LoginController {
 
         ModelAndView model = new ModelAndView();
 
+       User userCurrent = userRepository.findByEmail(user.getName());
+
         if (user != null) {
-            model.addObject("msg", "Hi " + user.getName()
+            model.addObject("msg", "Hi " + userCurrent.getName()
                     + ", you do not have permission to access this page!");
         } else {
             model.addObject("msg",
@@ -108,16 +114,18 @@ public class LoginController {
         return modelAndView;
     }
 
-    @RequestMapping(value="/admin/home", method = RequestMethod.GET)
+    @RequestMapping(value="/home", method = RequestMethod.GET)
     public ModelAndView home(){
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
         modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
         modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
-        modelAndView.setViewName("admin/home");
+        modelAndView.setViewName("home");
         return modelAndView;
     }
+
+
 
 
 }
