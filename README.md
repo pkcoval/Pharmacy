@@ -22,7 +22,7 @@ hashowane
  
  ## Screen:
  
-(./s/1.png)
+![Example screenshot](./s/1.png)
 ![Example screenshot](./s/2.png)
 ![Example screenshot](./s/3.png)
 ![Example screenshot](./s/4.png)
