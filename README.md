@@ -23,7 +23,7 @@ hashowane
  ## Screen:
  
 ![Example screenshot](./s/1.png)
-![alt text](1.png)
+![alt text](/1.png)
 ![Example screenshot](./s/2.png)
 ![Example screenshot](./s/3.png)
 ![Example screenshot](./s/4.png)
