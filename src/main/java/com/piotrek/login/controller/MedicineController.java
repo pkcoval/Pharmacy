@@ -5,8 +5,10 @@ import com.piotrek.login.repository.MedicineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -31,7 +33,7 @@ public class MedicineController {
     }
 
 
-    @RequestMapping(value = "/admin/addMedicine", method = RequestMethod.POST)
+    @RequestMapping(value = "admin/addMedicine", method = RequestMethod.POST)
         public ModelAndView addMedicine(@Valid Medicine medicine, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
         Medicine medicineExists = medicineRepository.findByName(medicine.getName());
@@ -41,12 +43,12 @@ public class MedicineController {
                             "There is already a medicine registered with the name provided");
         }
         if (bindingResult.hasErrors()) {
-            modelAndView.setViewName("/admin/addMedicine");
+            modelAndView.setViewName("admin/addMedicine");
         }else {
             medicineRepository.save(medicine);
             modelAndView.addObject("successMessage", "Medicine has been added successfully");
             modelAndView.addObject("medicine", new Medicine());
-            modelAndView.setViewName("/admin/addMedicine");
+            modelAndView.setViewName("admin/addMedicine");
         }
 
         return modelAndView;
@@ -62,7 +64,13 @@ public class MedicineController {
 
         return modelAndView;
     }
-
+    @ResponseBody
+    @RequestMapping (value="/admin/delete{name}/", method = RequestMethod.GET)
+    public String deleteMedicine(@PathVariable String name) {
+        Medicine medicineToDelete  =  medicineRepository.findByName(name);
+      medicineRepository.delete(medicineToDelete);
+        return "medicine delete";
+    }
 
 
 

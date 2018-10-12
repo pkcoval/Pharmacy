@@ -14,6 +14,7 @@ public interface MedicineRepository extends JpaRepository<Medicine, Long> {
 
 
 
+
 }
 
 

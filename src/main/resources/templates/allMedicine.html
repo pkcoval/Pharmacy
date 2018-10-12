@@ -20,6 +20,7 @@
         <th>Price</th>
         <th>Term of validaty </th>
         <th>Is the medicine on the recipe </th>
+        <th>Akcja </th>
     </tr>
 
     <tr th:each="medicine: ${medicineList}">
@@ -29,6 +30,11 @@
         <td th:text="${medicine.termOfValidaty}"></td>
         <td th:if="${medicine.hasRecipe == true}"  th:text="Yes" ></td>
         <td th:if="${medicine.hasRecipe == false}"  th:text="No" ></td>
+        <td >
+
+                <a th:href="@{/admin/delete{name}/(name=${medicine.name})}">Usuń</a>
+
+        </td>
 
 
     </tr>
