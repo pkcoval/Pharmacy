@@ -29,4 +29,4 @@ hashowane
 ![Example screenshot](./s/3.png)
 ![Example screenshot](./s/4.png)
 ![Example screenshot](./s/5.png)
->>>>>>> 16b7f3ce0d02d580b7b304b4c4110d62b49d1472
+
